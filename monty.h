@@ -75,6 +75,16 @@ void nop(stack_t **stack, unsigned int line_number);
 /* opcode2.c */
 void add(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+
+/* opcode_3.c */
+void mod(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
 
 /* validate.c */
 void validate_usage(int argc);
@@ -84,18 +94,20 @@ void malloc_error(void);
 void usage_error(void);
 void open_file_error(void);
 void invalid_instruction_error(char *opcode);
+void out_of_range_error(void);
 
 /* errors2.c */
 void no_argument_error(void);
-void pint_empty_stack_error(void);
+void empty_stack_error(char *opcode);
 void pop_empty_stack_error(void);
-void stack_too_short_error(char *inst);
+void stack_too_short_error(char *opcode);
+void div_by_zero_error(void);
 
 /* memory_free.c */
 void free_all(void);
 void free_tokens(void);
 void free_line(void);
-void free_stack(void);
+void free_stack(stack_t *head);
 void free_instruction(void);
 
 /* memory_free_2.c */
