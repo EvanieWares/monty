@@ -7,7 +7,7 @@ void free_all(void)
 {
 	free_tokens();
 	free_line();
-	free_stack();
+	free_stack(info->stack);
 	free_instruction();
 	close_stream();
 	free_info();
@@ -48,16 +48,23 @@ void free_instruction(void)
 /**
  * free_stack - frees the stack
  */
-void free_stack(void)
+void free_stack(stack_t *head)
 {
-	stack_t *temp;
+	stack_t *temp = head;
 
-	while (info->stack)
+	if (head == NULL)
 	{
-		temp = info->stack;
-		info->stack = info->stack->next;
-		free(temp);
+		return;
 	}
+
+	while (temp->next)
+	{
+		head = temp->next;
+		free(temp);
+		head->prev = NULL;
+		temp = head;
+	}
+	free(temp);
 }
 
 /**
