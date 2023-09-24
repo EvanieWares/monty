@@ -50,13 +50,26 @@ void free_instruction(void)
  */
 void free_stack(void)
 {
-	while (info->stack)
-	{
-		stack_t *temp = info->stack;
+	unsigned int i = 0;
+	stack_t *current;
 
-		info->stack = info->stack->next;
-		free(temp);
+	if (info->elements == 0)
+	{
+		free(info->stack);
+		return;
 	}
+	
+	current = info->stack;
+	while (i < info->elements)
+	{
+		stack_t *next = current->next;
+
+		free(current);
+		current = next;
+		i++;
+	}
+	free(current);
+	info->stack = NULL;
 }
 
 /**
