@@ -10,8 +10,6 @@ void initialize_info(void)
 	{
 		malloc_error();
 	}
-
-	initialize_stack();
 	initialize_instruction();
 
 	info->line_number = 0;
@@ -21,6 +19,7 @@ void initialize_info(void)
 	info->filename = NULL;
 	info->line = NULL;
 	info->tokens = NULL;
+	info->stack = NULL;
 }
 
 /**
