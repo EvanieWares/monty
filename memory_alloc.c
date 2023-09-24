@@ -10,6 +10,7 @@ void initialize_info(void)
 	{
 		malloc_error();
 	}
+
 	initialize_instruction();
 
 	info->line_number = 0;

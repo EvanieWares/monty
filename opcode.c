@@ -32,8 +32,8 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		new_node->next = *stack;
 		(*stack)->prev = new_node;
+		new_node->next = *stack;
 		*stack = new_node;
 	}
 	info->elements += 1;
@@ -46,20 +46,28 @@ void push(stack_t **stack, unsigned int line_number)
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp;
-
 	(void)line_number;
 
-	if (info->elements == 0)
+	if (*stack == NULL)
 	{
 		pop_empty_stack_error();
 	}
 
-	temp = *stack;
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
-	free(temp);
-	info->elements -= 1;
+	if ((*stack)->next == NULL)
+	{
+		stack_t *temp = *stack;
+
+		*stack = NULL;
+		free(temp);
+	}
+	else
+	{
+		stack_t *first = *stack;
+
+		*stack = (*stack)->next;
+		(*stack)->prev = NULL;
+		free(first);
+	}
 }
 
 /**
@@ -70,16 +78,14 @@ void pop(stack_t **stack, unsigned int line_number)
  */
 void pall(stack_t **stack, unsigned int line_number)
 {
-	unsigned int i = 0;
 	stack_t *current = *stack;
 
 	(void)line_number;
 
-	while (i < info->elements)
+	while (current)
 	{
 		fprintf(stdout, "%d\n", current->n);
 		current = current->next;
-		i++;
 	}
 }
 
@@ -92,7 +98,7 @@ void pint(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
 
-	if (info->elements > 0)
+	if (*stack)
 	{
 		fprintf(stdout, "%d\n", (*stack)->n);
 	}
@@ -109,6 +115,6 @@ void pint(stack_t **stack, unsigned int line_number)
  */
 void nop(stack_t **stack, unsigned int line_number)
 {
-	(void) stack;
-	(void) line_number;
+	(void)stack;
+	(void)line_number;
 }
