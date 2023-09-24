@@ -10,7 +10,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	int temp = 0;
 
 	(void) line_number;
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (info->elements < 2)
 	{
 		stack_too_short_error("swap");
 	}
@@ -27,7 +27,7 @@ void swap(stack_t **stack, unsigned int line_number)
 */
 void add(stack_t **stack, unsigned int line_number)
 {
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (info->elements < 2)
 	{
 		stack_too_short_error("add");
 	}
