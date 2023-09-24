@@ -114,6 +114,8 @@ void initialize_tokens(void);
 /* parse.c */
 void tokenize_input(void);
 void get_instruction(void);
+
+/* is_integer.c */
 int isInteger(const char *str);
 
 /* execute.c */

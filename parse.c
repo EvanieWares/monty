@@ -40,7 +40,6 @@ void tokenize_input(void)
 		token = strtok(NULL, delims);
 		i++;
 	}
-
 	info->tokens[i] = NULL;
 	free(line_dup);
 }
@@ -77,29 +76,4 @@ void get_instruction(void)
 		i++;
 	}
 	invalid_instruction_error(info->tokens[0]);
-}
-
-/**
- * isInteger - chacks if a string is integer
- * @str: string to check
- *
- * Return: 1 if true, otherwise 0
- */
-int isInteger(const char *str)
-{
-	int i = 0;
-
-	if (str[0] == '-' || str[0] == '+')
-	{
-		i++;
-	}
-	while (str[i] != '\0')
-	{
-		if (str[i] < '0' || str[i] > '9')
-		{
-			return (0);
-		}
-		i++;
-	}
-	return (1);
 }
