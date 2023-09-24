@@ -50,7 +50,7 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 
-	if (*stack == NULL)
+	if (info->elements == 0)
 	{
 		pop_empty_stack_error();
 	}
