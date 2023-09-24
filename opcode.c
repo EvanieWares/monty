@@ -70,7 +70,7 @@ void pop(stack_t **stack, unsigned int line_number)
  */
 void pall(stack_t **stack, unsigned int line_number)
 {
-	int i = 0;
+	unsigned int i = 0;
 	stack_t *current = *stack;
 
 	(void)line_number;
@@ -108,4 +108,7 @@ void pint(stack_t **stack, unsigned int line_number)
  * @line_number: the line number
  */
 void nop(stack_t **stack, unsigned int line_number)
-{}
+{
+	(void) stack;
+	(void) line_number;
+}

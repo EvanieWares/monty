@@ -1,5 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
+#define _GNU_SOURCE
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,9 +17,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -31,21 +32,35 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct info_s - struct containing global variables
+ * @line: holds line contents
+ * @file: points to the stream to read from
+ * @filename: name of the file to read
+ * @stack: points to the top element of the stack
+ * @elements: keep track of the number of elements in a stack
+ * @line_number: keep track of the line number
+ * @token_number: stores the number of opcode args
+ * @tokens: list of opcode args
+ * @instr: points to the intructions
+ *
+ * Description: global variable
+ */
 typedef struct info_s
 {
-        char *line;
-        FILE *file;
-        char *filename;
-        stack_t *stack;
-        unsigned int elements;
-        unsigned int line_number;
-        unsigned int token_number;
-        char **tokens;
-        instruction_t *instr;
+	char *line;
+	FILE *file;
+	char *filename;
+	stack_t *stack;
+	unsigned int elements;
+	unsigned int line_number;
+	unsigned int token_number;
+	char **tokens;
+	instruction_t *instr;
 } info_t;
 
 extern info_t *info;
