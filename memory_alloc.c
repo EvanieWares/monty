@@ -33,6 +33,8 @@ void initialize_stack(void)
 	{
 		malloc_error();
 	}
+	info->stack->next = NULL;
+	info->stack->prev = NULL;
 }
 
 /**
