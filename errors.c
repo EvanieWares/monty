@@ -16,7 +16,6 @@ void malloc_error(void)
 void usage_error(void)
 {
 	fprintf(stderr, "USAGE: monty file\n");
-	free_all();
 	exit(EXIT_FAILURE);
 }
 

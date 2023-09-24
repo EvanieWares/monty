@@ -98,7 +98,7 @@ void free_line(void);
 void free_stack(void);
 void free_instruction(void);
 
-/* memory_free2.c */
+/* memory_free_2.c */
 void free_info(void);
 
 /* get_stream.c */
