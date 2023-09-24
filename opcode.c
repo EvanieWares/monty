@@ -11,7 +11,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 
-	if (info->token_number != 2)
+	if (info->token_number != 2 || !isInteger(info->tokens[1]))
 	{
 		no_argument_error();
 	}
