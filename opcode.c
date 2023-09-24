@@ -104,7 +104,7 @@ void pint(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		pint_empty_stack_error();
+		empty_stack_error("pint");
 	}
 }
 

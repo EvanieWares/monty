@@ -58,14 +58,23 @@ void get_instruction(void)
 		{"pop", &pop},
 		{"swap", &swap},
 		{"add", &add},
-		{"nop", &nop}};
+		{"nop", &nop},
+		{"sub", &sub},
+		{"div", &_div},
+		{"mul", &mul},
+		{"mod", &mod},
+		{"pchar", &pchar},
+		{"pstr", &pstr},
+		{"rotr", &rotr},
+		{"rotl", &rotl}
+		};
 
 	if (info->token_number == 0)
 	{
 		return;
 	}
 
-	while (i < 7)
+	while (i < 15)
 	{
 		if (strcmp(instruction[i].opcode, info->tokens[0]) == 0)
 		{

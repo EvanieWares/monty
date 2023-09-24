@@ -22,13 +22,11 @@ void get_stream(void)
 			continue;
 		}
 
-		/**
-		* if (info->tokens[0][0] == '#')
+		if (info->tokens[0][0] == '#')
 		{
 			free_tokens();
 			continue;
 		}
-		*/
 
 		get_instruction();
 		execute();

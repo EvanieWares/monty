@@ -40,3 +40,14 @@ void invalid_instruction_error(char *opcode)
 	free_all();
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * out_of_range_error - prints error when value is not in
+ * the ascii table
+*/
+void out_of_range_error(void)
+{
+	fprintf(stderr, "L%u: can't pchar, value out of range\n", info->line_number);
+	free_all();
+	exit(EXIT_FAILURE);
+}

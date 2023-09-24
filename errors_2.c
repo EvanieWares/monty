@@ -12,10 +12,11 @@ void no_argument_error(void)
 
 /**
  * pint_empty_stack_error - prints error when pinting an empty stack
+ * @opcode: the opcode (instruction)
 */
-void pint_empty_stack_error(void)
+void empty_stack_error(char *opcode)
 {
-	fprintf(stderr, "L%u: can't pint, stack empty\n", info->line_number);
+	fprintf(stderr, "L%u: can't %s, stack empty\n", info->line_number, opcode);
 	free_all();
 	exit(EXIT_FAILURE);
 }
@@ -32,11 +33,21 @@ void pop_empty_stack_error(void)
 
 /**
  * stack_too_short_error - prints error when stack is too short
- * @inst: the opcode (instruction)
+ * @opcode: the opcode (instruction)
 */
-void stack_too_short_error(char *inst)
+void stack_too_short_error(char *opcode)
 {
-	fprintf(stderr, "L%u: can't %s, stack too short\n", info->line_number, inst);
+	fprintf(stderr, "L%u: can't %s, stack too short\n", info->line_number, opcode);
+	free_all();
+	exit(EXIT_FAILURE);
+}
+
+/**
+ * div_by_zero_error - prints error when top element is 0
+*/
+void div_by_zero_error(void)
+{
+	fprintf(stderr, "L%u: division by zero\n", info->line_number);
 	free_all();
 	exit(EXIT_FAILURE);
 }
